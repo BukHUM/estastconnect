@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+// Frontend Routes
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/properties/{slug}', [App\Http\Controllers\PropertyController::class, 'show'])->name('properties.show');
+Route::post('/leads', [App\Http\Controllers\LeadController::class, 'store'])->name('leads.store');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
@@ -14,8 +15,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-// Admin Routes
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+// Admin Routes - ต้องเป็น admin เท่านั้น
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     
     // Properties
@@ -26,6 +27,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::delete('/properties/{property}', [App\Http\Controllers\Admin\PropertyController::class, 'destroy'])->name('properties.destroy');
     Route::post('/properties/{property}/publish', [App\Http\Controllers\Admin\PropertyController::class, 'publish'])->name('properties.publish');
     Route::post('/properties/{property}/unpublish', [App\Http\Controllers\Admin\PropertyController::class, 'unpublish'])->name('properties.unpublish');
+    Route::post('/properties/{property}/ai-rewrite', [App\Http\Controllers\Admin\PropertyController::class, 'aiRewrite'])->name('properties.ai-rewrite');
     
     // Leads
     Route::get('/leads', [App\Http\Controllers\Admin\LeadController::class, 'index'])->name('leads.index');

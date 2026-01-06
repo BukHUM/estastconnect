@@ -13,3 +13,379 @@
 [x-cloak] {
     display: none !important;
 }
+
+/* ============================================
+   Base Styles & Reset
+   ============================================ */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ============================================
+   Custom Utilities
+   ============================================ */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Prevent text overflow */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Aspect ratio utilities */
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+/* ============================================
+   Layout & Spacing Fixes
+   ============================================ */
+/* Ensure proper spacing between sections */
+section {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fix grid layout issues */
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+/* Ensure flex items don't shrink unexpectedly */
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+/* Container spacing */
+.container,
+.max-w-7xl,
+.max-w-4xl {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* ============================================
+   Navbar & Header Fixes
+   ============================================ */
+nav.sticky,
+header.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: white;
+}
+
+/* Prevent navbar overlap */
+nav + main,
+header + main {
+    margin-top: 0;
+}
+
+/* ============================================
+   Modal & Overlay Fixes
+   ============================================ */
+#lead-modal {
+    z-index: 9999 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#lead-modal.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+#lead-modal:not(.hidden) {
+    display: flex !important;
+    visibility: visible;
+}
+
+#lead-modal-overlay {
+    z-index: 9998 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* ============================================
+   Admin Layout Fixes
+   ============================================ */
+/* Sidebar positioning */
+aside.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 40;
+}
+
+/* Main content spacing when sidebar is present */
+main.flex-1 {
+    margin-left: 0;
+    min-width: 0;
+}
+
+@media (min-width: 1024px) {
+    main.flex-1 {
+        margin-left: 16rem; /* 256px - sidebar width */
+    }
+}
+
+/* Admin header positioning */
+header.bg-white.sticky {
+    z-index: 30;
+    position: sticky;
+    top: 0;
+}
+
+/* ============================================
+   Table Responsive Fixes
+   ============================================ */
+.overflow-x-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+    height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Table cell spacing */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table th,
+table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* ============================================
+   Card & Container Fixes
+   ============================================ */
+/* Prevent card overlap */
+.bg-white.rounded-xl,
+.bg-white.rounded-lg {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.5rem;
+}
+
+/* Grid gap fixes */
+.grid.gap-6 {
+    gap: 1.5rem;
+}
+
+.grid.gap-4 {
+    gap: 1rem;
+}
+
+.grid.gap-8 {
+    gap: 2rem;
+}
+
+/* ============================================
+   Form & Input Fixes
+   ============================================ */
+input,
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    ring-width: 2px;
+    ring-color: #3b82f6;
+}
+
+/* Form spacing */
+form.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+form.space-y-6 > * + * {
+    margin-top: 1.5rem;
+}
+
+/* ============================================
+   Responsive Fixes
+   ============================================ */
+@media (max-width: 640px) {
+    .container,
+    .max-w-7xl,
+    .max-w-4xl {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    /* Stack cards on mobile */
+    .grid.grid-cols-1.md\:grid-cols-2,
+    .grid.grid-cols-1.md\:grid-cols-3,
+    .grid.grid-cols-1.md\:grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reduce padding on mobile */
+    .p-6 {
+        padding: 1rem;
+    }
+
+    .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .py-4 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    nav,
+    aside,
+    header,
+    footer {
+        display: none;
+    }
+
+    body {
+        overflow: visible;
+    }
+}

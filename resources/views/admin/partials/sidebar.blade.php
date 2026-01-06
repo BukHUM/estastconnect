@@ -2,18 +2,13 @@
     x-show="sidebarOpen || window.innerWidth >= 1024"
     x-cloak
     @click.away="if (window.innerWidth < 1024) sidebarOpen = false"
-    x-transition:enter="transition ease-out duration-300 transform lg:!transition-none"
-    x-transition:enter-start="-translate-x-full lg:!translate-x-0"
+    x-transition:enter="transition ease-out duration-300 transform"
+    x-transition:enter-start="-translate-x-full lg:translate-x-0"
     x-transition:enter-end="translate-x-0"
-    x-transition:leave="transition ease-in duration-300 transform lg:!transition-none"
+    x-transition:leave="transition ease-in duration-300 transform"
     x-transition:leave-start="translate-x-0"
-    x-transition:leave-end="-translate-x-full lg:!translate-x-0"
-    class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white flex flex-col flex-shrink-0"
-    x-init="
-        if (window.innerWidth >= 1024) {
-            sidebarOpen = true;
-        }
-    ">
+    x-transition:leave-end="-translate-x-full lg:translate-x-0"
+    class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white flex flex-col flex-shrink-0 shadow-xl lg:shadow-none">
     <!-- Sidebar Header -->
     <div class="p-4 sm:p-6 flex items-center justify-between border-b border-slate-800 lg:border-b-0">
         <h1 class="text-lg sm:text-xl font-bold flex items-center gap-2">

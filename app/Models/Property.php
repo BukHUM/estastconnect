@@ -51,7 +51,9 @@ class Property extends Model
 
     public function mainImage()
     {
-        return $this->hasOne(Media::class)->where('is_main', true);
+        return $this->hasOne(Media::class)
+            ->where('is_main', true)
+            ->orderBy('order');
     }
 
     // Scopes

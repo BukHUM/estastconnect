@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ScraperLog;
+use App\Jobs\ScrapePropertyJob;
+use App\Services\ScraperService;
 use Illuminate\Http\Request;
 
 class ScraperController extends Controller
@@ -43,10 +45,31 @@ class ScraperController extends Controller
         return view('admin.scraper.index', compact('logs', 'stats'));
     }
 
-    public function run()
+    public function run(Request $request, ScraperService $scraperService)
     {
-        // TODO: Dispatch scraping job
-        return back()->with('success', 'เริ่มต้นการ Scrape เรียบร้อยแล้ว');
+        $url = $request->input('url');
+        
+        if ($url) {
+            // Scrape specific URL
+            ScrapePropertyJob::dispatch($url)->onQueue('scraping');
+            
+            return back()->with('success', "เริ่มต้นการ Scrape URL: {$url} เรียบร้อยแล้ว");
+        } else {
+            // Scrape all configured URLs
+            $urls = $scraperService->getUrlsToScrape();
+            
+            if (empty($urls)) {
+                return back()->with('error', 'ไม่มี URL ที่ตั้งค่าไว้ กรุณาเพิ่ม URL ใน config/scraper.php');
+            }
+            
+            $dispatched = 0;
+            foreach ($urls as $urlToScrape) {
+                ScrapePropertyJob::dispatch($urlToScrape)->onQueue('scraping');
+                $dispatched++;
+            }
+            
+            return back()->with('success', "เริ่มต้นการ Scrape {$dispatched} URL(s) เรียบร้อยแล้ว");
+        }
     }
 }
 

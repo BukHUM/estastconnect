@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -94,6 +95,45 @@ class PropertyController extends Controller
         $property->update(['status' => 'pending']);
 
         return back()->with('success', 'ยกเลิกการเผยแพร่เรียบร้อยแล้ว');
+    }
+
+    /**
+     * AI Rewrite description
+     */
+    public function aiRewrite(Request $request, Property $property, OpenAIService $openAIService)
+    {
+        if (empty($property->description)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'ไม่มีคำอธิบายให้ Rewrite'
+            ], 400);
+        }
+
+        $propertyData = [
+            'title' => $property->title,
+            'location' => $property->location,
+            'price' => $property->price,
+            'type' => $property->type,
+        ];
+
+        $result = $openAIService->rewriteDescription($property->description, $propertyData);
+
+        if ($result['success']) {
+            $property->update([
+                'ai_description' => $result['description']
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'AI Rewrite สำเร็จ',
+                'description' => $result['description']
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => $result['error']
+            ], 500);
+        }
     }
 }
 

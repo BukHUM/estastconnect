@@ -1,59 +1,210 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PropFinder - Real Estate Affiliate Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> ระบบจัดการและแสดงผลข้อมูลอสังหาริมทรัพย์ พร้อมระบบ Lead Generation และ Affiliate Marketing
 
-## About Laravel
+## 📋 เกี่ยวกับโปรเจกต์
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**PropFinder** (หรือ **Estate Connect**) เป็นแพลตฟอร์มสำหรับรวบรวมและจัดการข้อมูลอสังหาริมทรัพย์ โดยมีฟีเจอร์หลักดังนี้:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 🔍 **Scraping Engine**: ดึงข้อมูลอสังหาริมทรัพย์จากเว็บต้นทางอัตโนมัติ
+- 🤖 **AI Content Enhancement**: ใช้ OpenAI API เพื่อปรับปรุงและ Rewrite คำอธิบายทรัพย์สิน
+- 🏠 **Property Portal**: หน้าเว็บสำหรับผู้ใช้ทั่วไปค้นหาและดูรายละเอียดโครงการ
+- 📊 **Admin Dashboard**: ระบบจัดการหลังบ้านสำหรับตรวจสอบ แก้ไข และ Publish ทรัพย์สิน
+- 👥 **Lead Generation**: ระบบเก็บข้อมูลลูกค้าที่สนใจและส่งต่อไปยัง Affiliate Links
+- 📈 **Analytics & Tracking**: ติดตามสถิติการดู คลิก และ Leads
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ เทคโนโลยีที่ใช้
 
-## Learning Laravel
+### Backend
+- **Framework**: Laravel 12+ (PHP 8.2+)
+- **Database**: MySQL 8.0+
+- **Queue System**: Redis / Database Queue
+- **Cache**: Redis / Memcached
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Frontend
+- **Templates**: Laravel Blade
+- **CSS Framework**: Tailwind CSS 4.0
+- **JavaScript**: Alpine.js 3.x
+- **Icons**: SVG Icons
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Admin Panel
+- **Custom Development**: Laravel Blade + Tailwind CSS + Alpine.js
+- **Responsive Design**: รองรับ Mobile, Tablet, Desktop
 
-## Laravel Sponsors
+### Integrations
+- **AI**: OpenAI API (GPT-4o) สำหรับ Rewrite Content
+- **Scraping**: Spatie/Browsershot หรือ Playwright
+- **Analytics**: Google Analytics
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 ฟีเจอร์หลัก
 
-### Premium Partners
+### สำหรับผู้ใช้ทั่วไป (Frontend)
+- ✅ ค้นหาโครงการอสังหาริมทรัพย์ (บ้าน, คอนโด, ที่ดิน)
+- ✅ ดูรายละเอียดโครงการพร้อมรูปภาพ
+- ✅ กรองตามประเภท ราคา และทำเล
+- ✅ กรอกข้อมูลสนใจ (Lead Capture) เพื่อรับข้อมูลเพิ่มเติม
+- ✅ SEO Optimized สำหรับการค้นหาใน Google
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### สำหรับ Admin (Backend)
+- ✅ **Dashboard**: ภาพรวมสถิติระบบ
+- ✅ **Property Management**: จัดการทรัพย์สิน (เพิ่ม, แก้ไข, Publish, ลบ)
+- ✅ **AI Rewrite**: ใช้ AI ปรับปรุงคำอธิบายทรัพย์สิน
+- ✅ **Lead Management**: ดูและ Export ข้อมูล Leads
+- ✅ **Scraper Management**: จัดการและรัน Scraper
+- ✅ **User Management**: จัดการผู้ใช้และสิทธิ์ (Admin, Editor, Viewer)
 
-## Contributing
+## 📦 การติดตั้ง
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### ความต้องการของระบบ
+- PHP >= 8.2
+- Composer
+- MySQL >= 8.0
+- Node.js & NPM
+- Redis (แนะนำ) หรือ Database Queue
 
-## Code of Conduct
+### ขั้นตอนการติดตั้ง
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone repository**
+```bash
+git clone <repository-url>
+cd estateconnect
+```
 
-## Security Vulnerabilities
+2. **ติดตั้ง Dependencies**
+```bash
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **ตั้งค่า Environment**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## License
+4. **ตั้งค่าฐานข้อมูลใน `.env`**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=estateconnect
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **รัน Migration และ Seeder**
+```bash
+php artisan migrate
+php artisan db:seed --class=AdminUserSeeder
+```
+
+6. **Build Assets**
+```bash
+npm run build
+# หรือสำหรับ development
+npm run dev
+```
+
+7. **สร้าง Storage Link**
+```bash
+php artisan storage:link
+```
+
+8. **รัน Queue Worker** (ถ้าใช้ Queue)
+```bash
+php artisan queue:work
+```
+
+## 👤 ข้อมูล Admin User
+
+หลังจากรัน seeder แล้ว คุณสามารถ login ด้วย:
+
+- **Email**: `admin@example.com`
+- **Password**: `password`
+- **URL**: `http://localhost/estateconnect/login`
+
+> ⚠️ **คำเตือน**: ควรเปลี่ยนรหัสผ่าน default ทันทีหลังการติดตั้ง
+
+## 📁 โครงสร้างโปรเจกต์
+
+```
+estateconnect/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/          # Admin Controllers
+│   │   │   ├── Auth/           # Authentication
+│   │   │   └── ...             # Frontend Controllers
+│   │   └── Middleware/          # Custom Middleware
+│   └── Models/                  # Eloquent Models
+├── database/
+│   ├── migrations/              # Database Migrations
+│   └── seeders/                 # Database Seeders
+├── resources/
+│   ├── views/
+│   │   ├── admin/               # Admin Panel Views
+│   │   ├── layouts/             # Layout Templates
+│   │   └── ...                  # Frontend Views
+│   ├── css/                     # Tailwind CSS
+│   └── js/                      # JavaScript
+├── routes/
+│   └── web.php                  # Web Routes
+└── storage/                      # File Storage
+```
+
+## 🔐 Authentication & Authorization
+
+ระบบใช้ Role-Based Access Control (RBAC):
+
+- **Admin**: สิทธิ์เต็ม (จัดการทุกอย่าง)
+- **Editor**: แก้ไขและ Publish ทรัพย์สิน
+- **Viewer**: ดูข้อมูลเท่านั้น
+
+Admin routes ถูกป้องกันด้วย middleware `role:admin`
+
+## 📊 Database Schema
+
+### ตารางหลัก
+- `properties` - ข้อมูลทรัพย์สิน
+- `media` - รูปภาพทรัพย์สิน
+- `affiliate_links` - ลิงก์ Affiliate
+- `leads` - ข้อมูลลูกค้าที่สนใจ
+- `scraper_logs` - Log การ Scrape
+- `users` - ผู้ใช้ระบบ
+
+## 🔄 Workflow
+
+1. **Scraping**: ระบบดึงข้อมูลจากเว็บต้นทาง → เก็บในฐานข้อมูล (status: pending)
+2. **Review**: Admin ตรวจสอบและแก้ไขข้อมูล
+3. **AI Enhancement**: ใช้ AI Rewrite คำอธิบาย (ถ้าต้องการ)
+4. **Publishing**: Admin Publish ทรัพย์สิน → แสดงในหน้าเว็บ
+5. **Lead Generation**: ผู้ใช้สนใจ → กรอกข้อมูล → ส่งต่อไปยัง Affiliate Link
+
+## 🧪 Development
+
+### รัน Development Server
+```bash
+php artisan serve
+npm run dev
+```
+
+### Clear Cache
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+## 📝 License
+
+This project is proprietary software. All rights reserved.
+
+## 📞 Support
+
+สำหรับคำถามหรือปัญหาการใช้งาน กรุณาติดต่อทีมพัฒนา
+
+---
+
+**Version**: 1.0  
+**Last Updated**: 2024-12-26
